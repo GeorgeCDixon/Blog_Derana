@@ -171,4 +171,3 @@ app.delete('/post/:id',async (req,res)=>{
 
 app.listen(4000);
 
-//mongodb+srv://DixonC:Ghnb$$5270@cluster0.6nt3mnn.mongodb.net/?retryWrites=true&w=majority
