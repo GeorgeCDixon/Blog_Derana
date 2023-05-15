@@ -116,7 +116,7 @@ app.put('/post', upload.single('file'), async(req,res) =>{
 
     const {token} = req.cookies;
     jwt.verify(token, secret, {}, async(err, info) =>{
-        if(err) throw err;
+    if(err) throw err;
         const {id, title, summary, content} =req.body;
         const postDoc = await Post.findById(id);
         const isAuthor =JSON.stringify(postDoc.author) === JSON.stringify(info.id);
@@ -156,6 +156,18 @@ app.get('/post/:id', async (req, res) =>{
 })
 
 
+
+app.delete('/post/:id',async (req,res)=>{
+    const {id} =req.params;
+    try{
+        const results = await Post.findByIdAndDelete(id);
+        res.send(results);
+      
+    }catch(err){
+        console.log(err);
+    }
+    
+});
 
 app.listen(4000);
 
